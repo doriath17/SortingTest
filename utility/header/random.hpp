@@ -1,5 +1,5 @@
-#ifndef RANDOM_HPP
-#define RANDOM_HPP
+#ifndef UTL_RANDOM_HPP
+#define UTL_RANDOM_HPP
 
 #include <cstdint>
 

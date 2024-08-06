@@ -1,8 +1,9 @@
-#ifndef UTILITY_HPP
-#define UTILITY_HPP
+#ifndef UTL_UTILITY_HPP
+#define UTL_UTILITY_HPP
 
 #include <cstdint>
 #include "random.hpp"
 #include "array.hpp"
+#include "timer.hpp"
 
-#endif // UTILITY_H
+#endif // UTL_UTILITY_H

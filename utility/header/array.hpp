@@ -6,9 +6,16 @@
 namespace utl {
 
 // template<typename T>
+/// @brief Array has two variables: size and lenght.
 class Array {
 public:
+    /// @brief this constructor set the lenght to size
+    /// @param size the size in memory 
     Array(unsigned size);
+
+    /// @brief this constructor set the lenght to size. Elements are initialized 
+    /// in the interval [min, max].
+    /// @param size the size in memory 
     Array(unsigned size, int min, int max);
     ~Array();
 
@@ -19,7 +26,7 @@ public:
     void print() const;
 
 private:
-    unsigned size;
+    unsigned size, lenght;
     int *array;
 };
 

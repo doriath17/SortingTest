@@ -5,7 +5,7 @@ using namespace utl;
 using namespace std;
 
 Array::Array(unsigned size)
-    : size{size}
+    : size{size}, lenght {size}
 {
     try {
         array = new int[size];
@@ -34,7 +34,7 @@ int Array::operator[](unsigned i)
 
 void Array::fill_random(const RandGen &rndg)
 {
-    for (unsigned i=0; i<size; ++i)
+    for (unsigned i=0; i<lenght; ++i)
         array[i] = rndg.get_rand_int();
 }
 
