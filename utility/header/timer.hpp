@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <chrono>
+#include "utl_typedef.hpp"
 
 namespace utl {
 
-enum class TimerRatio {ms, us};
+enum class TimerRatio {min, s, ms, us};
 
 class Timer {
 public: 

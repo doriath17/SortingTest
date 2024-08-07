@@ -1,31 +1,31 @@
 #include <iostream>
-#include <ratio>
 #include "utility.hpp"
 
 /* 
-TODO: timer / exec stats
 TODO: algoritmi di ordinamento
 */
 
-void run()
+using namespace utl;
+using namespace std;
+
+
+void run(Array &arr)
 {
-    for (int i=0; i<1000000000; ++i)
-        ;
+    merge_sort(arr, 0, arr.get_lenght()-1);
 }
 
 void run_callback(void *args)
 {
-    run();
+    Array *arr = (Array *) args;
+    run(*arr);
 }
 
-using namespace utl;
 int main()
 {
-    Timer timer1 {run_callback, nullptr};
-    // Array arr {10, 1, 99};
-    // arr.print();
+    Array arr {(u32) 10e8, 1, 99};
+    Timer timer1 {run_callback, (void *) &arr};
     timer1.take_exec_time();
-    timer1.print_duration(TimerRatio::ms);
-    
+    timer1.print_duration(TimerRatio::min);
+    cout << "ord = " << check_order(arr) << endl;
     return 0;
 }

@@ -4,8 +4,8 @@
 using namespace utl;
 using namespace std;
 
-Array::Array(unsigned size)
-    : size{size}, lenght {size}
+Array::Array(u32 size)
+    : size{size}, lenght {size}, array{nullptr}
 {
     try {
         array = new int[size];
@@ -15,7 +15,7 @@ Array::Array(unsigned size)
     }
 }
 
-Array::Array(unsigned size, int min, int max)
+Array::Array(u32 size, i32 min, i32 max)
     : Array(size)
 {
     RandGen rndg {min, max};
@@ -27,14 +27,23 @@ Array::~Array()
     delete array;
 }
 
-int Array::operator[](unsigned i)
+u32 Array::get_lenght()
 {
+    return lenght;
+}
+
+i32& Array::operator[](i32 i)
+{
+    if (i >= lenght) {
+        cout << "Array index out of bound, exiting";
+        exit(0);
+    }
     return array[i];
 }
 
 void Array::fill_random(const RandGen &rndg)
 {
-    for (unsigned i=0; i<lenght; ++i)
+    for (u32 i=0; i<lenght; ++i)
         array[i] = rndg.get_rand_int();
 }
 
@@ -44,3 +53,4 @@ void Array::print() const
         cout << array[i] << " ";
     cout << endl;
 }
+

@@ -7,6 +7,7 @@ add_library(
     ${UTILITY_DIR}/random.cpp 
     ${UTILITY_DIR}/array.cpp 
     ${UTILITY_DIR}/timer.cpp
+    ${UTILITY_DIR}/sorting.cpp
 )
 target_include_directories(utility PUBLIC ${UTILITY_DIR}/header)
 

@@ -1,22 +1,24 @@
 #ifndef UTL_RANDOM_HPP
 #define UTL_RANDOM_HPP
 
-#include <cstdint>
+#include "utl_typedef.hpp"
 
 namespace utl {
 
 class RandGen {
 public:
 
-    RandGen(int min, int max);
+    RandGen(i32 min, i32 max);
     ~RandGen();
 
-    int get_rand_int() const; 
+    i32 get_rand_int() const; 
+    static i32 get_rand_int(i32 a, i32 b);
 
-    void set_range(int min, int max);
+
+    void set_range(i32 min, i32 max);
 
 private:
-    int min, max;
+    i32 min, max;
 
 };
 

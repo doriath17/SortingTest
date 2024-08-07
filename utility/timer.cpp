@@ -3,7 +3,7 @@
 using namespace utl;
 using namespace std::chrono;
 using namespace std::chrono_literals;
-
+using namespace std::literals;
 
 Timer::Timer(callback_t func, void *args)
     : func{func}, args{args}
@@ -24,18 +24,12 @@ void Timer::take_exec_time()
 
 void Timer::print_duration(TimerRatio tr) const
 {   
-    int num, den;
-    std::string str("--");
-    duration<float, std::milli> d(end - start);
-    switch (tr){
-        case TimerRatio::ms:
-            num = 1;
-            den = 1000;
-            str = "ms";
-            break;
-        default: 
-            std::cout << "not supported: timer ratio.\n";
-            break;
-    }
-    std::cout << "Durata esecuzione: " << d.count() << str << std::endl;
+    duration<i64, std::nano> d((end - start)/1us);
+    i64 ticks = d.count(); // total nano seconds
+    i64 tot_ms = ticks / 1000, ns = ticks - tot_ms * 1000;
+    i64 tot_s = tot_ms / 1000, ms = tot_ms - tot_s * 1000;
+    i64 tot_min = tot_s / 60, s = tot_s - tot_min * 60;
+    i64 tot_h = tot_min / 60, min = tot_min - tot_h * 60;
+
+    std::cout << min << "min " << s << "s " << ms << "ms " << ns << "ns\n";
 }
